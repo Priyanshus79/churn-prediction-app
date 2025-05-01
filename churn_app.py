@@ -11,7 +11,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-# ✅ Load the dataset from local file
+#  Load the dataset from local file
 @st.cache_data
 def load_data():
     df = pd.read_csv("telco_churn.csv")  # Ensure this file is in the same folder
@@ -30,7 +30,7 @@ y = df['Churn']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Sidebar for model selection
-st.sidebar.title("🔧 Settings")
+st.sidebar.title(" Settings")
 model_option = st.sidebar.selectbox("Choose Model", ["Logistic Regression", "Decision Tree"])
 model = LogisticRegression(max_iter=1000) if model_option == "Logistic Regression" else DecisionTreeClassifier(random_state=42)
 model.fit(X_train, y_train)
@@ -73,6 +73,6 @@ if st.button("Predict Churn"):
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
     if prediction == 1:
-        st.error(f"⚠️ High Risk of Churn! (Probability: {probability:.2f})")
+        st.error(f" High Risk of Churn! (Probability: {probability:.2f})")
     else:
-        st.success(f"✅ Low Risk of Churn (Probability: {probability:.2f})")
+        st.success(f" Low Risk of Churn (Probability: {probability:.2f})")
